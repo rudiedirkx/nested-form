@@ -1,10 +1,10 @@
 <?php
 
-namespace rdx\nestedform;
+namespace rdx\nestedform\fields;
 
-use rdx\nestedform\FormField;
+use rdx\nestedform\Field;
 
-class InputFormField extends FormField {
+class InputField extends Field {
 
 	public function render(array $options = []) {
 		$parents = $this->getParents();

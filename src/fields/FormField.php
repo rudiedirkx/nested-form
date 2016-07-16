@@ -1,11 +1,11 @@
 <?php
 
-namespace rdx\nestedform;
+namespace rdx\nestedform\fields;
 
 use rdx\nestedform\Form;
-use rdx\nestedform\FormField;
+use rdx\nestedform\Field;
 
-class FormFormField extends FormField {
+class FormField extends Field {
 
 	public $subform;
 

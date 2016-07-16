@@ -2,7 +2,14 @@
 
 namespace rdx\nestedform;
 
-use rdx\nestedform\FormField;
+// @todo Templates (form, fields, field, x_field)
+// @todo Validate
+// @todo Extract
+// @todo Simple nesting with dot notation
+// @todo Translate
+
+use rdx\nestedform\Field;
+use rdx\nestedform\fields\FormField;
 
 abstract class Form {
 
@@ -18,7 +25,7 @@ abstract class Form {
 
 	abstract public function build();
 
-	public function add($name, FormField $field) {
+	public function add($name, Field $field) {
 		$this->children[$name] = $field;
 		$field->setParent($this);
 	}
@@ -60,7 +67,7 @@ abstract class Form {
 	public function getName() {
 		if ($parent = $this->getParentForm()) {
 			foreach ($parent->children as $name => $field) {
-				if ($field instanceof FormFormField && $field->subform === $this) {
+				if ($field instanceof FormField && $field->subform === $this) {
 					return $name;
 				}
 			}

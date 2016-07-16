@@ -4,7 +4,7 @@ namespace rdx\nestedform;
 
 use rdx\nestedform\Form;
 
-abstract class FormField {
+abstract class Field {
 
 	public $options = [];
 	public $parent;
@@ -26,6 +26,10 @@ abstract class FormField {
 				return $name;
 			}
 		}
+	}
+
+	public function getLabel() {
+		return isset($this->options['label']) ? $this->options['label'] : $this->getName();
 	}
 
 	public function getParents() {

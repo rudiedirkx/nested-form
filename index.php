@@ -1,24 +1,24 @@
 <?php
 
 use rdx\nestedform\Form;
-use rdx\nestedform\FormFormField;
-use rdx\nestedform\InputFormField;
+use rdx\nestedform\fields\FormField;
+use rdx\nestedform\fields\InputField;
 
 require 'autoload.php';
 
 class AddressForm extends Form {
 	public function build() {
-		$this->add('street', new InputFormField());
-		$this->add('zipcode', new InputFormField());
-		$this->add('city', new InputFormField());
+		$this->add('street', new InputField());
+		$this->add('zipcode', new InputField());
+		$this->add('city', new InputField());
 	}
 }
 
 class UserForm extends Form {
 	public function build() {
-		$this->add('user_firstname', new InputFormField());
-		$this->add('user_lastname', new InputFormField());
-		$this->add('user_address', new FormFormField([
+		$this->add('user_firstname', new InputField());
+		$this->add('user_lastname', new InputField());
+		$this->add('user_address', new FormField([
 			'form' => new AddressForm(),
 		]));
 	}
@@ -26,11 +26,11 @@ class UserForm extends Form {
 
 class OrganizationForm extends Form {
 	public function build() {
-		$this->add('org_name', new InputFormField());
-		$this->add('org_address', new FormFormField([
+		$this->add('org_name', new InputField());
+		$this->add('org_address', new FormField([
 			'form' => new AddressForm(),
 		]));
-		$this->add('org_manager', new FormFormField([
+		$this->add('org_manager', new FormField([
 			'form' => new UserForm(),
 		]));
 	}
